@@ -50,6 +50,12 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-bot.launch();
+// Optional: Launch bot for /start commands
+try {
+  bot.launch();
+  } catch (error) {
+  console.log('Bot polling disabled or error:', error.message);
+}
+// 
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
