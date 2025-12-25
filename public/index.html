@@ -1,43 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Looksmaxing Base v2.0</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto; background: linear-gradient(135deg, #667eea, #764ba2); min-height: 100vh; color: #333; }
-    .container { max-width: 500px; margin: 0 auto; padding: 20px; padding-top: 40px; }
-    header { text-align: center; color: white; margin-bottom: 30px; }
-    h1 { font-size: 2.2em; margin-bottom: 10px; }
-    .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-    .card h2 { color: #667eea; margin-bottom: 10px; }
-    .btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 15px; }
-    .btn:hover { transform: scale(1.02); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Looksmaxing Base v2.0</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Looksmaxing Base v2.0</h1>
-      <p>Complete Self-Improvement Guide</p>
-    </header>
-    <div class="card">
-      <h2>Welcome</h2>
-      <p>Your comprehensive guide to self-improvement: fitness, nutrition, style, and grooming.</p>
+    <div id="app">
+        <!-- Header with points -->
+        <header class="tg-header">
+            <div class="points-badge">
+                <span class="fire-icon">🔥</span>
+                <span class="points-text">0 баллов</span>
+            </div>
+        </header>
+
+        <!-- Main content area -->
+        <main id="main-content" class="container">
+            <h1 class="main-title">Выберите раздел для развития</h1>
+            
+            <div class="sections-grid">
+                <!-- Section 1: Facial Care -->
+                <div class="section-card blue-card" onclick="loadSection('facial')">
+                    <div class="card-icon">😊</div>
+                    <h2>Facial Care</h2>
+                    <p>Уход за лицом</p>
+                    <span class="badge">ТОП советы</span>
+                </div>
+
+                <!-- Section 2: Fitness Training -->
+                <div class="section-card orange-card" onclick="loadSection('fitness')">
+                    <div class="card-icon">💪</div>
+                    <h2>Fitness</h2>
+                    <p>Тренировки</p>
+                </div>
+
+                <!-- Section 3: Fashion & Style -->
+                <div class="section-card purple-card" onclick="loadSection('fashion')">
+                    <div class="card-icon">👔</div>
+                    <h2>Fashion</h2>
+                    <p>Стиль и одежда</p>
+                    <span class="commission">Комиссия 0%</span>
+                </div>
+            </div>
+
+            <!-- News Section -->
+            <section class="news-section" id="news-section" style="display:none;">
+                <h2><span class="flash-icon">⚡</span> Новости и советы</h2>
+                <div class="news-grid" id="news-grid"></div>
+            </section>
+        </main>
+
+        <!-- Navigation Bar -->
+        <nav class="nav-bar">
+            <button class="nav-btn" onclick="showHome()">
+                <span class="nav-icon">🏠</span>
+                <span>Главная</span>
+            </button>
+            <button class="nav-btn" onclick="showProfile()">
+                <span class="nav-icon">👤</span>
+                <span>Профиль</span>
+            </button>
+            <button class="nav-btn" onclick="showCart()">
+                <span class="nav-icon">🛒</span>
+                <span id="cart-badge" class="cart-badge">0</span>
+            </button>
+        </nav>
     </div>
-    <div class="card">
-      <h2>Features</h2>
-      <p>✓ Training Programs<br/>✓ Nutrition Plans<br/>✓ Style & Fashion<br/>✓ Grooming Guides</p>
-    </div>
-    <button class="btn" onclick="sendData()">Start Now</button>
-  </div>
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand();
-    function sendData() { tg.showPopup({ title: 'Started', message: 'Looksmaxing Base loaded!', buttons: [{type: 'ok'}] }); }
-  </script>
+
+    <script src="/js/app.js"></script>
 </body>
 </html>
