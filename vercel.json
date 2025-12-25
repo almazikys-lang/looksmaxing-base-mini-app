@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm install",
+  "outputDirectory": "public",
+  "devCommand": "node src/index.js",
+  "env": {
+    "BOT_TOKEN": "@BOTTOKEN",
+    "PORT": "3000"
+  }
+}
