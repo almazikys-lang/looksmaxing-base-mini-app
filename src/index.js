@@ -184,14 +184,6 @@ app.listen(PORT, () => {
   console.log(`📱 Telegram Bot: @looksmaxing_base_bot`);
 });
 
-// Bot launch with error handling
-try {
-  bot.launch();
-  console.log('🤖 Bot launched successfully');
-} catch (error) {
-  console.log('⚠️ Bot polling: ', error.message);
-}
-
 // Graceful shutdown
 process.once('SIGINT', () => {
   bot.stop('SIGINT');
